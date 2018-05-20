@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">24</string>
+    <string name="home_title">24</string>
+    <string name="play_button">PLAY</string>
+    <string name="number">#</string>
+    <string name="refresh_button">New Numbers</string>
+</resources>
