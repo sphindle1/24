@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".game"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".game"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".SelectMode" />
+        <activity android:name=".SingleMode"></activity>
     </application>
 
 </manifest>

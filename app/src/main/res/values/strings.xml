@@ -5,4 +5,12 @@
     <string name="number">#</string>
     <string name="refresh_button">New Numbers</string>
     <string name="show_solution">Show Solution</string>
+    <string name="practice_mode">Practice Mode</string>
+    <string name="single">Single</string>
+    <string name="multiple">Multi-Solution</string>
+    <string name="add">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">x</string>
+    <string name="divide">/</string>
+    <string name="score">Score: 0</string>
 </resources>
