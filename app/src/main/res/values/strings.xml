@@ -13,4 +13,5 @@
     <string name="multiply">x</string>
     <string name="divide">/</string>
     <string name="score">Score: 0</string>
+    <string name="timer">120s</string>
 </resources>
