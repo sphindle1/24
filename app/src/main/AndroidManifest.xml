@@ -20,7 +20,9 @@
             android:name=".game"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".SelectMode" />
-        <activity android:name=".SingleMode"></activity>
+        <activity android:name=".SingleMode" />
+        <activity android:name=".Tester" />
+        <activity android:name=".SingleModeHard"></activity>
     </application>
 
 </manifest>

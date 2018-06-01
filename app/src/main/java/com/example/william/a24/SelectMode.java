@@ -20,4 +20,12 @@ public class SelectMode extends AppCompatActivity {
         Intent intent = new Intent(this, SingleMode.class);
         startActivity(intent);
     }
+    public void toTester(View view) {
+        Intent intent = new Intent(this, Tester.class);
+        startActivity(intent);
+    }
+    public void toSingleHard(View view) {
+        Intent intent = new Intent(this, SingleModeHard.class);
+        startActivity(intent);
+    }
 }

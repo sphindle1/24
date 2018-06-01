@@ -1,6 +1,7 @@
 package com.example.william.a24;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.os.CountDownTimer;
 
-public class SingleMode extends AppCompatActivity {
+public class SingleModeHard extends AppCompatActivity {
     Button num1;
     Button num2;
     Button num3;
@@ -31,7 +31,7 @@ public class SingleMode extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_mode);
+        setContentView(R.layout.activity_single_mode_hard);
         num1 = (Button) findViewById(R.id.button7);
         num2 = (Button) findViewById(R.id.button8);
         num3 = (Button) findViewById(R.id.button9);
@@ -64,7 +64,7 @@ public class SingleMode extends AppCompatActivity {
                 restart.setText("Retry");
                 restart.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(SingleMode.this, SingleMode.class);
+                        Intent intent = new Intent(SingleModeHard.this, SingleModeHard.class);
                         startActivity(intent);
                     }
                 });
@@ -72,6 +72,14 @@ public class SingleMode extends AppCompatActivity {
                 constraintSet.applyTo(layout);
             }
         }.start();
+    }
+    public void impossible(View view) {
+        if(Solution.solve(a, b, c, d).size() == 0) {
+            score++;
+        } else {
+            score--;
+        }
+        newNumbers();
     }
     public void pickNum(View view) {
         score -= 0.5;
@@ -86,12 +94,6 @@ public class SingleMode extends AppCompatActivity {
         b = number();
         c = number();
         d = number();
-        while (Solution.solve(a, b, c, d).size() == 0) {
-            a = number();
-            b = number();
-            c = number();
-            d = number();
-        }
         num1.setText(a);
         num2.setText(b);
         num3.setText(c);
