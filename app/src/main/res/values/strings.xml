@@ -36,4 +36,7 @@
     <string name="single_hard">Hard</string>
     <string name="single_easy">Easy</string>
     <string name="impossible">IMPOSSIBLE</string>
+    <string name="time_attack_easy">Time Attack (Easy)</string>
+    <string name="time_attack_hard">Time Attack (Hard)</string>
+    <string name="time_attack_time">60s</string>
 </resources>

@@ -56,11 +56,13 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
+        android:background="@color/colorPrimary"
         android:onClick="pickNum"
         android:text="@string/refresh_button"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,11 +70,13 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="116dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
         android:onClick="showSolution"
         android:text="@string/show_solution"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -94,10 +98,9 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginRight="128dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3">
 
         <LinearLayout
@@ -110,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="@string/number"
                 android:textSize="30sp" />
         </LinearLayout>
     </ScrollView>

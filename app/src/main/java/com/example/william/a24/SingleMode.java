@@ -1,6 +1,9 @@
 package com.example.william.a24;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +20,7 @@ public class SingleMode extends AppCompatActivity {
     Button num3;
     Button num4;
     Button prev;
-    TextView sol;
+    Button prevOp;
     String a;
     String b;
     String c;
@@ -37,6 +40,7 @@ public class SingleMode extends AppCompatActivity {
         num3 = (Button) findViewById(R.id.button9);
         num4 = (Button) findViewById(R.id.button10);
         prev = num1; //arbitrary at this point
+        prevOp = (Button) findViewById(R.id.plus); //also arbitraray
         newNumbers();
         score = 0;
         final TextView timer = (TextView) findViewById(R.id.timer);
@@ -77,7 +81,7 @@ public class SingleMode extends AppCompatActivity {
         score -= 0.5;
         newNumbers();
     }
-    private void newNumbers() {
+    protected void newNumbers() {
         num1.setVisibility(View.VISIBLE);
         num2.setVisibility(View.VISIBLE);
         num3.setVisibility(View.VISIBLE);
@@ -106,7 +110,7 @@ public class SingleMode extends AppCompatActivity {
         return "" + ((int)(Math.random()*13) + 1);
     }
     public void clickNum(View view) {
-        Button picked;
+        final Button picked;
         if (view.getId() == R.id.button7) {
             picked = num1;
         } else if (view.getId() == R.id.button8) {
@@ -116,10 +120,13 @@ public class SingleMode extends AppCompatActivity {
         } else {
             picked = num4;
         }
+        prev.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        picked.getBackground().setColorFilter(Color.rgb(0, 0, 100), PorterDuff.Mode.MULTIPLY);
         if (operator == '?') {
             curNum = picked.getText().toString();
             prev = picked;
         } else {
+            prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
             if (operator == '/' && picked.getText().toString().equals("0")) {
                 curNum = "0";
                 prev = picked;
@@ -133,25 +140,46 @@ public class SingleMode extends AppCompatActivity {
                 count++;
                 if (count == 3) {
                     if (curNum.equals("24")) {
-                        score++;
-                        newNumbers();
+                        complete();
+                        picked.getBackground().setColorFilter(Color.rgb(0, 160, 0), PorterDuff.Mode.MULTIPLY);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Do something after 5s = 5000ms
+                                TextView timer = findViewById(R.id.timer);
+                                timer.setTextColor(Color.rgb(204, 0, 0));
+                                picked.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+                                newNumbers();
+                            }
+                        }, 500);
+
                     }
                 }
             }
         }
     }
+    protected void complete() {
+        score++;
+    }
     public void clickOperator(View view) {
+        prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
         if (curNum != "") {
             if (view.getId() == R.id.plus) {
+                prevOp = (Button) findViewById(R.id.plus);
                 operator = '+';
             } else if (view.getId() == R.id.multiply) {
+                prevOp = (Button) findViewById(R.id.multiply);
                 operator = '*';
             } else if (view.getId() == R.id.minus) {
+                prevOp = (Button) findViewById(R.id.minus);
                 operator = '-';
             } else if (view.getId() == R.id.divide) {
+                prevOp = (Button) findViewById(R.id.divide);
                 operator = '/';
             }
         }
+        prevOp.getBackground().setColorFilter(Color.rgb(0, 0, 100), PorterDuff.Mode.MULTIPLY);
     }
     private String operate(String x, String y, char op) {
         if (x.indexOf('/') != -1 || y.indexOf('/') != -1) {

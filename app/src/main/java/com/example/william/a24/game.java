@@ -39,6 +39,8 @@ public class game extends AppCompatActivity {
         num4.setText(d);
         sol.setText(" ");
         showall = false;
+        TextView solutions  = (TextView) findViewById(R.id.textView8);
+        solutions.setText(" ");
     }
 
     public void pickNum(View view) {

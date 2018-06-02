@@ -28,4 +28,12 @@ public class SelectMode extends AppCompatActivity {
         Intent intent = new Intent(this, SingleModeHard.class);
         startActivity(intent);
     }
+    public void toTimeEasy(View view) {
+        Intent intent = new Intent(this, TimeAttackEasy.class);
+        startActivity(intent);
+    }
+    public void toTimeHard(View view) {
+        Intent intent = new Intent(this, TimeAttackHard.class);
+        startActivity(intent);
+    }
 }
