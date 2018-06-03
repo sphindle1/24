@@ -58,7 +58,10 @@ public class TimeAttackHard extends SingleModeHard {
                 restart.setText("Retry");
                 restart.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(TimeAttackHard.this, TimeAttackHard.class);
+                        /*Intent intent = new Intent(TimeAttackHard.this, TimeAttackHard.class);
+                        startActivity(intent);*/
+                        Intent intent = getIntent();
+                        finish();
                         startActivity(intent);
                     }
                 });

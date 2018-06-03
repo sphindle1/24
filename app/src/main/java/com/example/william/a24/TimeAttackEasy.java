@@ -59,7 +59,10 @@ public class TimeAttackEasy extends SingleMode {
                 restart.setText("Retry");
                 restart.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(TimeAttackEasy.this, TimeAttackEasy.class);
+                        /*Intent intent = new Intent(TimeAttackEasy.this, TimeAttackEasy.class);
+                        startActivity(intent);*/
+                        Intent intent = getIntent();
+                        finish();
                         startActivity(intent);
                     }
                 });

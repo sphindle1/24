@@ -77,6 +77,19 @@ public class SingleMode extends AppCompatActivity {
             }
         }.start();
     }
+    public void undo(View view) {
+        num1.setVisibility(View.VISIBLE);
+        num2.setVisibility(View.VISIBLE);
+        num3.setVisibility(View.VISIBLE);
+        num4.setVisibility(View.VISIBLE);
+        num1.setText(a);
+        num2.setText(b);
+        num3.setText(c);
+        num4.setText(d);
+        count = 0;
+        curNum = "";
+        operator = '?';
+    }
     public void pickNum(View view) {
         score -= 0.5;
         newNumbers();
@@ -106,7 +119,7 @@ public class SingleMode extends AppCompatActivity {
         curNum = "";
         operator = '?';
     }
-    private String number() {
+    protected String number() {
         return "" + ((int)(Math.random()*13) + 1);
     }
     public void clickNum(View view) {
@@ -125,6 +138,9 @@ public class SingleMode extends AppCompatActivity {
         if (operator == '?') {
             curNum = picked.getText().toString();
             prev = picked;
+        } else if (prev == picked) { // for clicking the same button after clicking the operator
+            prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+            operator = '?';
         } else {
             prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
             if (operator == '/' && picked.getText().toString().equals("0")) {
@@ -146,9 +162,10 @@ public class SingleMode extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                // Do something after 5s = 5000ms
                                 TextView timer = findViewById(R.id.timer);
-                                timer.setTextColor(Color.rgb(204, 0, 0));
+                                if (timer != null) {
+                                    timer.setTextColor(Color.rgb(204, 0, 0));
+                                }
                                 picked.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
                                 newNumbers();
                             }

@@ -39,4 +39,6 @@
     <string name="time_attack_easy">Time Attack (Easy)</string>
     <string name="time_attack_hard">Time Attack (Hard)</string>
     <string name="time_attack_time">60s</string>
+    <string name="undo">Undo</string>
+    <string name="game_modes">Play Game</string>
 </resources>
