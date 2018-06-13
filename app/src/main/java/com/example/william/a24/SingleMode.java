@@ -29,6 +29,7 @@ public class SingleMode extends AppCompatActivity {
     char operator;
     int count;
     double score;
+    CountDownTimer cdt;
 
 
     @Override
@@ -46,7 +47,10 @@ public class SingleMode extends AppCompatActivity {
         final TextView timer = (TextView) findViewById(R.id.timer);
         final TextView endText = new TextView(this);
         final Button restart = new Button(this);
-        new CountDownTimer(120000, 1000) {
+        if (cdt != null) {
+            cdt.cancel();
+        }
+        cdt = new CountDownTimer(120000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("Time: " + millisUntilFinished / 1000 + "s");

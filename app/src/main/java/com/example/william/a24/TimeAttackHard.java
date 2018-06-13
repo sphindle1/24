@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class TimeAttackHard extends SingleModeHard {
-    CountDownTimer cdt;
     long timeCount;
 
     @Override
