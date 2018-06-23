@@ -41,4 +41,5 @@
     <string name="time_attack_time">60s</string>
     <string name="undo">Undo</string>
     <string name="game_modes">Play Game</string>
+    <string name="high_score">High Score: 0</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.example.william.a24;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Handler;
@@ -28,14 +30,20 @@ public class SingleMode extends AppCompatActivity {
     String curNum;
     char operator;
     int count;
-    double score;
+    float score;
     CountDownTimer cdt;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_mode);
+        TextView highScore = (TextView) findViewById(R.id.highScore);
+        sharedPref = SingleMode.this.getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+        highScore.setText("High Score: " + sharedPref.getFloat("high_score", 0));
         num1 = (Button) findViewById(R.id.button7);
         num2 = (Button) findViewById(R.id.button8);
         num3 = (Button) findViewById(R.id.button9);
@@ -58,9 +66,15 @@ public class SingleMode extends AppCompatActivity {
             }
 
             public void onFinish() {
+                double hs = sharedPref.getFloat("high_score", 0);
+                if (score > hs) {
+                    hs = score;
+                    editor.putFloat("high_score", score);
+                    editor.apply();
+                }
                 ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.Layout);
                 layout.removeAllViews();
-                endText.setText("Score: " + score);
+                endText.setText("Score: " + score + "\nHigh Score: " + hs);
                 endText.setTextSize(36);
                 endText.setId(View.generateViewId());
                 restart.setId(View.generateViewId());
@@ -68,7 +82,6 @@ public class SingleMode extends AppCompatActivity {
                 layout.addView(restart);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(layout);
-                endText.setGravity(Gravity.CENTER);
                 restart.setText("Retry");
                 restart.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -78,6 +91,7 @@ public class SingleMode extends AppCompatActivity {
                 });
                 constraintSet.connect(restart.getId(),ConstraintSet.TOP,endText.getId(),ConstraintSet.BOTTOM,0);
                 constraintSet.applyTo(layout);
+                endText.setGravity(Gravity.CENTER);
             }
         }.start();
     }
@@ -90,6 +104,8 @@ public class SingleMode extends AppCompatActivity {
         num2.setText(b);
         num3.setText(c);
         num4.setText(d);
+        prev.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
         count = 0;
         curNum = "";
         operator = '?';

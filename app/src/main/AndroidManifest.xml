@@ -24,20 +24,21 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SingleMode"
-            android:parentActivityName=".SelectMode" />
+            android:parentActivityName=".GameSelect" />
         <activity
             android:name=".Tester"
             android:parentActivityName=".SelectMode" />
         <activity
             android:name=".SingleModeHard"
-            android:parentActivityName=".SelectMode" />
+            android:parentActivityName=".GameSelect" />
         <activity
             android:name=".TimeAttackEasy"
-            android:parentActivityName=".SelectMode" />
+            android:parentActivityName=".GameSelect" />
         <activity
             android:name=".TimeAttackHard"
-            android:parentActivityName=".SelectMode" />
-        <activity android:name=".GameSelect"></activity>
+            android:parentActivityName=".GameSelect" />
+        <activity android:name=".GameSelect"
+            android:parentActivityName=".SelectMode"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.william.a24;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -7,14 +8,11 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.concurrent.TimeUnit;
 
 public class SingleModeHard extends SingleMode {
 
@@ -22,6 +20,10 @@ public class SingleModeHard extends SingleMode {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_mode_hard);
+        TextView highScore = (TextView) findViewById(R.id.highScore);
+        sharedPref = SingleModeHard.this.getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+        highScore.setText("High Score: " + sharedPref.getFloat("high_score", 0));
         num1 = (Button) findViewById(R.id.button7);
         num2 = (Button) findViewById(R.id.button8);
         num3 = (Button) findViewById(R.id.button9);
@@ -44,9 +46,15 @@ public class SingleModeHard extends SingleMode {
             }
 
             public void onFinish() {
+                double hs = sharedPref.getFloat("high_score", 0);
+                if (score > hs) {
+                    hs = score;
+                    editor.putFloat("high_score", score);
+                    editor.apply();
+                }
                 ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.Layout);
                 layout.removeAllViews();
-                endText.setText("Score: " + score);
+                endText.setText("Score: " + score + "\nHigh Score: " + hs);
                 endText.setTextSize(36);
                 endText.setId(View.generateViewId());
                 restart.setId(View.generateViewId());
