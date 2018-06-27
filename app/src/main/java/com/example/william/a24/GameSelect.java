@@ -16,16 +16,12 @@ public class GameSelect extends AppCompatActivity {
         Intent intent = new Intent(this, SingleMode.class);
         startActivity(intent);
     }
+    public void toStingleMedium(View view) {
+        Intent intent = new Intent(this, SingleModeMedium.class);
+        startActivity(intent);
+    }
     public void toSingleHard(View view) {
         Intent intent = new Intent(this, SingleModeHard.class);
-        startActivity(intent);
-    }
-    public void toTimeEasy(View view) {
-        Intent intent = new Intent(this, TimeAttackEasy.class);
-        startActivity(intent);
-    }
-    public void toTimeHard(View view) {
-        Intent intent = new Intent(this, TimeAttackHard.class);
         startActivity(intent);
     }
 }

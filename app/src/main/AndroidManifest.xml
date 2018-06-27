@@ -33,12 +33,20 @@
             android:parentActivityName=".GameSelect" />
         <activity
             android:name=".TimeAttackEasy"
-            android:parentActivityName=".GameSelect" />
+            android:parentActivityName=".TimeAttackMode" />
         <activity
             android:name=".TimeAttackHard"
+            android:parentActivityName=".TimeAttackMode" />
+        <activity
+            android:name=".GameSelect"
+            android:parentActivityName=".SelectMode" />
+        <activity
+            android:name=".SingleModeMedium"
             android:parentActivityName=".GameSelect" />
-        <activity android:name=".GameSelect"
-            android:parentActivityName=".SelectMode"></activity>
+        <activity android:name=".TimeAttackMode"
+            android:parentActivityName=".SelectMode"/>
+        <activity android:name=".TimeAttackMedium"
+            android:parentActivityName=".TimeAttackMode"></activity>
     </application>
 
 </manifest>

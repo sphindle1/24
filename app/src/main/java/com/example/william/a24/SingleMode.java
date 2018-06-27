@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 
@@ -30,6 +31,7 @@ public class SingleMode extends AppCompatActivity {
     String curNum;
     char operator;
     int count;
+    int max;
     float score;
     CountDownTimer cdt;
     SharedPreferences sharedPref;
@@ -44,6 +46,7 @@ public class SingleMode extends AppCompatActivity {
         sharedPref = SingleMode.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         highScore.setText("High Score: " + sharedPref.getFloat("high_score", 0));
+        max = 10;
         num1 = (Button) findViewById(R.id.button7);
         num2 = (Button) findViewById(R.id.button8);
         num3 = (Button) findViewById(R.id.button9);
@@ -76,12 +79,10 @@ public class SingleMode extends AppCompatActivity {
                 layout.removeAllViews();
                 endText.setText("Score: " + score + "\nHigh Score: " + hs);
                 endText.setTextSize(36);
+                endText.setTextColor(Color.WHITE);
                 endText.setId(View.generateViewId());
                 restart.setId(View.generateViewId());
-                layout.addView(endText);
-                layout.addView(restart);
-                ConstraintSet constraintSet = new ConstraintSet();
-                constraintSet.clone(layout);
+                //endText.setGravity(Gravity.CENTER);
                 restart.setText("Retry");
                 restart.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
@@ -89,9 +90,12 @@ public class SingleMode extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+                layout.addView(endText);
+                layout.addView(restart);
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone(layout);
                 constraintSet.connect(restart.getId(),ConstraintSet.TOP,endText.getId(),ConstraintSet.BOTTOM,0);
                 constraintSet.applyTo(layout);
-                endText.setGravity(Gravity.CENTER);
             }
         }.start();
     }
@@ -104,8 +108,8 @@ public class SingleMode extends AppCompatActivity {
         num2.setText(b);
         num3.setText(c);
         num4.setText(d);
-        prev.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
-        prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        prev.setBackground(getDrawable(R.drawable.rounded));
+        prevOp.setBackground(getDrawable(R.drawable.rounded_black));
         count = 0;
         curNum = "";
         operator = '?';
@@ -140,7 +144,7 @@ public class SingleMode extends AppCompatActivity {
         operator = '?';
     }
     protected String number() {
-        return "" + ((int)(Math.random()*13) + 1);
+        return "" + ((int)(Math.random()*max) + 1);
     }
     public void clickNum(View view) {
         final Button picked;
@@ -153,16 +157,16 @@ public class SingleMode extends AppCompatActivity {
         } else {
             picked = num4;
         }
-        prev.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
-        picked.getBackground().setColorFilter(Color.rgb(0, 0, 100), PorterDuff.Mode.MULTIPLY);
+        prev.setBackground(getDrawable(R.drawable.rounded));
+        picked.setBackground(getDrawable(R.drawable.rounded_on_click));
         if (operator == '?') {
             curNum = picked.getText().toString();
             prev = picked;
         } else if (prev == picked) { // for clicking the same button after clicking the operator
-            prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+            prevOp.setBackground(getDrawable(R.drawable.rounded_black));
             operator = '?';
         } else {
-            prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+            prevOp.setBackground(getDrawable(R.drawable.rounded_black));
             if (operator == '/' && picked.getText().toString().equals("0")) {
                 curNum = "0";
                 prev = picked;
@@ -186,7 +190,7 @@ public class SingleMode extends AppCompatActivity {
                                 if (timer != null) {
                                     timer.setTextColor(Color.rgb(204, 0, 0));
                                 }
-                                picked.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+                                picked.setBackground(getDrawable(R.drawable.rounded));
                                 newNumbers();
                             }
                         }, 500);
@@ -200,7 +204,7 @@ public class SingleMode extends AppCompatActivity {
         score++;
     }
     public void clickOperator(View view) {
-        prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        prevOp.setBackground(getDrawable(R.drawable.rounded_black));
         if (curNum != "") {
             if (view.getId() == R.id.plus) {
                 prevOp = (Button) findViewById(R.id.plus);
@@ -216,7 +220,7 @@ public class SingleMode extends AppCompatActivity {
                 operator = '/';
             }
         }
-        prevOp.getBackground().setColorFilter(Color.rgb(0, 0, 100), PorterDuff.Mode.MULTIPLY);
+        prevOp.setBackground(getDrawable(R.drawable.rounded_white));
     }
     private String operate(String x, String y, char op) {
         if (x.indexOf('/') != -1 || y.indexOf('/') != -1) {

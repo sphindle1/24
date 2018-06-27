@@ -24,6 +24,7 @@ public class TimeAttackHard extends SingleModeHard {
         sharedPref = TimeAttackHard.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         highScore.setText("High Score: " + sharedPref.getFloat("high_score", 0));
+        max = 13;
         num1 = (Button) findViewById(R.id.button7);
         num2 = (Button) findViewById(R.id.button8);
         num3 = (Button) findViewById(R.id.button9);
@@ -59,6 +60,7 @@ public class TimeAttackHard extends SingleModeHard {
                 layout.removeAllViews();
                 endText.setText("Score: " + score + "\nHigh Score: " + hs);
                 endText.setTextSize(36);
+                endText.setTextColor(Color.WHITE);
                 endText.setId(View.generateViewId());
                 restart.setId(View.generateViewId());
                 layout.addView(endText);
@@ -77,7 +79,7 @@ public class TimeAttackHard extends SingleModeHard {
                 });
                 constraintSet.connect(restart.getId(), ConstraintSet.TOP, endText.getId(), ConstraintSet.BOTTOM, 0);
                 constraintSet.applyTo(layout);
-                endText.setGravity(Gravity.CENTER);
+                //endText.setGravity(Gravity.CENTER);
             }
         }.start();
     }

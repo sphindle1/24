@@ -3,18 +3,18 @@
     <string name="home_title">24</string>
     <string name="play_button">PLAY</string>
     <string name="number">#</string>
-    <string name="refresh_button">New Numbers</string>
+    <string name="refresh_button">Skip</string>
     <string name="show_solution">Show Solution</string>
-    <string name="practice_mode">Practice Mode</string>
+    <string name="practice_mode">Practice</string>
     <string name="single">Single</string>
     <string name="multiple">Multi-Solution</string>
     <string name="add">+</string>
-    <string name="minus">-</string>
+    <string name="minus">−</string>
     <string name="multiply">x</string>
-    <string name="divide">/</string>
+    <string name="divide">÷</string>
     <string name="score">Score: 0</string>
     <string name="timer">120s</string>
-    <string name="tester">Tester</string>
+    <string name="tester">Test</string>
     <string name="one">1</string>
     <string name="two">2</string>
     <string name="three">3</string>
@@ -34,12 +34,13 @@
         <item>13</item>
     </string-array>
     <string name="single_hard">Hard</string>
+    <string name="single_medium">Medium</string>
     <string name="single_easy">Easy</string>
     <string name="impossible">IMPOSSIBLE</string>
-    <string name="time_attack_easy">Time Attack (Easy)</string>
-    <string name="time_attack_hard">Time Attack (Hard)</string>
     <string name="time_attack_time">60s</string>
     <string name="undo">Undo</string>
-    <string name="game_modes">Play Game</string>
+    <string name="game_modes">Game Modes</string>
+    <string name="standard">Standard</string>
+    <string name="time_atack">Time Attack</string>
     <string name="high_score">High Score: 0</string>
 </resources>

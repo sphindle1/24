@@ -24,4 +24,8 @@ public class SelectMode extends AppCompatActivity {
         Intent intent = new Intent(this, GameSelect.class);
         startActivity(intent);
     }
+    public void toTimeAttack(View view) {
+        Intent intent = new Intent(this, TimeAttackMode.class);
+        startActivity(intent);
+    }
 }

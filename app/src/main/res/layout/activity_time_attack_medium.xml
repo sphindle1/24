@@ -6,20 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#100f10"
-    tools:context=".SingleModeHard">
+    tools:context=".TimeAttackMedium">
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
         android:layout_marginTop="420dp"
         android:background="@drawable/rounded_red"
         android:onClick="pickNum"
         android:text="@string/refresh_button"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button12"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.324"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -163,7 +162,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/timer"
+        android:text="@string/time_attack_time"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -171,25 +170,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/impossible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="420dp"
-        android:background="@drawable/rounded_purple"
-        android:onClick="impossible"
-        android:text="@string/impossible"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button12"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/button12"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="420dp"
         android:background="@drawable/rounded_yellow"
         android:onClick="undo"
@@ -197,7 +182,7 @@
         android:textColor="@android:color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

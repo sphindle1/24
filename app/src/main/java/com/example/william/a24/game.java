@@ -72,8 +72,8 @@ public class game extends AppCompatActivity {
         num2.setText(b);
         num3.setText(c);
         num4.setText(d);
-        prev.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
-        prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        prev.setBackground(getDrawable(R.drawable.rounded));
+        prevOp.setBackground(getDrawable(R.drawable.rounded_black));
         count = 0;
         curNum = "";
         operator = '?';
@@ -148,16 +148,16 @@ public class game extends AppCompatActivity {
         } else {
             picked = num4;
         }
-        prev.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
-        picked.getBackground().setColorFilter(Color.rgb(0, 0, 100), PorterDuff.Mode.MULTIPLY);
+        prev.setBackground(getDrawable(R.drawable.rounded));
+        picked.setBackground(getDrawable(R.drawable.rounded_on_click));
         if (operator == '?') {
             curNum = picked.getText().toString();
             prev = picked;
         } else if (prev == picked) { // for clicking the same button after clicking the operator
-            prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+            prevOp.setBackground(getDrawable(R.drawable.rounded_black));
             operator = '?';
         } else {
-            prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+            prevOp.setBackground(getDrawable(R.drawable.rounded_black));
             if (operator == '/' && picked.getText().toString().equals("0")) {
                 curNum = "0";
                 prev = picked;
@@ -176,11 +176,7 @@ public class game extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                TextView timer = findViewById(R.id.timer);
-                                if (timer != null) {
-                                    timer.setTextColor(Color.rgb(204, 0, 0));
-                                }
-                                picked.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+                                picked.setBackground(getDrawable(R.drawable.rounded));
                                 newNumbers();
                             }
                         }, 500);
@@ -190,7 +186,8 @@ public class game extends AppCompatActivity {
         }
     }
     public void clickOperator(View view) {
-        prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        //prevOp.getBackground().setColorFilter(Color.rgb(63, 81, 181), PorterDuff.Mode.MULTIPLY);
+        prevOp.setBackground(getDrawable(R.drawable.rounded_black));
         if (curNum != "") {
             if (view.getId() == R.id.plus) {
                 prevOp = (Button) findViewById(R.id.plus);
@@ -206,7 +203,7 @@ public class game extends AppCompatActivity {
                 operator = '/';
             }
         }
-        prevOp.getBackground().setColorFilter(Color.rgb(0, 0, 100), PorterDuff.Mode.MULTIPLY);
+        prevOp.setBackground(getDrawable(R.drawable.rounded_white));
     }
     private String operate(String x, String y, char op) {
         if (x.indexOf('/') != -1 || y.indexOf('/') != -1) {

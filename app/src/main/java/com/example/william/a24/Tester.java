@@ -3,6 +3,7 @@ package com.example.william.a24;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,6 +17,18 @@ public class Tester extends AppCompatActivity {
         setContentView(R.layout.activity_tester);
         TextView solutions = findViewById(R.id.answer);
         solutions.setText(" ");
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> numadapter = ArrayAdapter.createFromResource(
+                this, R.array.number_choice, R.layout.spinner_layout);
+        numadapter.setDropDownViewResource(R.layout.spinner_layout);
+        spinner.setAdapter(numadapter);
+
+        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        Spinner spinner4 = (Spinner) findViewById(R.id.spinner4);
+        spinner2.setAdapter(numadapter);
+        spinner3.setAdapter(numadapter);
+        spinner4.setAdapter(numadapter);
     }
 
     public void solution(View view) {

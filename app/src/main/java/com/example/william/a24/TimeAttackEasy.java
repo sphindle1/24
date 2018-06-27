@@ -24,6 +24,7 @@ public class TimeAttackEasy extends SingleMode {
         sharedPref = TimeAttackEasy.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
         highScore.setText("High Score: " + sharedPref.getFloat("high_score", 0));
+        max = 10;
         num1 = (Button) findViewById(R.id.button7);
         num2 = (Button) findViewById(R.id.button8);
         num3 = (Button) findViewById(R.id.button9);
@@ -59,13 +60,14 @@ public class TimeAttackEasy extends SingleMode {
                 layout.removeAllViews();
                 endText.setText("Score: " + score + "\nHigh Score: " + hs);
                 endText.setTextSize(36);
+                endText.setTextColor(Color.WHITE);
                 endText.setId(View.generateViewId());
                 restart.setId(View.generateViewId());
                 layout.addView(endText);
                 layout.addView(restart);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.clone(layout);
-                endText.setGravity(Gravity.CENTER);
+                //endText.setGravity(Gravity.CENTER);
                 restart.setText("Retry");
                 restart.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#100f10"
-    tools:context=".GameSelect">
+    tools:context=".TimeAttackMode">
 
     <Button
         android:id="@+id/easy"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/easy"
-        android:onClick="toSingle"
+        android:onClick="toTimeEasy"
         android:text="@string/single_easy"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/medium"
-        android:onClick="toStingleMedium"
+        android:onClick="toTimeMedium"
         android:text="@string/single_medium"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/hard"
-        android:onClick="toSingleHard"
+        android:onClick="toTimeHard"
         android:text="@string/single_hard"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -54,8 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/standard"
+        android:text="@string/time_atack"
         android:textColor="@android:color/white"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
